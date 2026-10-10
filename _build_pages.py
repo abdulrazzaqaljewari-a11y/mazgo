@@ -32,7 +32,7 @@ SPRITE = """<svg width="0" height="0" style="position:absolute" aria-hidden="tru
 
 NAV = """<nav class="navbar" id="navbar">
 <div class="nav-container">
-<a href="index.html" class="logo" aria-label="mazgo"><span class="logo-icon"><img src="assets/brand/mazgo-wordmark-leaf.png" alt="mazgo"></span></a>
+<a href="index.html" class="logo" aria-label="mazgo"><span class="logo-icon"><img src="assets/brand/mazgo-wordmark-ink.png" alt="mazgo"></span></a>
 <ul class="nav-links">
 <li><a href="index.html#how" data-i18n="nav.how">Näin se toimii</a></li>
 <li><a href="index.html#merchants" data-i18n="nav.merchants">Kauppiaille</a></li>
