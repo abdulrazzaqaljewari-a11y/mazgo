@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="fi" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mazgo — Säästä rahaa ja pelasta ruokaa</title>
+<meta name="description" content="mazgo yhdistää sinut lähellä oleviin leipomoihin, ravintoloihin ja kahviloihin, jotka myyvät päivän ylijäämän vähintään 30 % alennuksella ennen sulkemista.">
+<link rel="icon" type="image/png" href="assets/brand/mazgo-mark-bag.png">
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-title-key="home.title">
+<div id="progress"></div>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<defs>
+<symbol id="i-bars" viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></symbol>
+<symbol id="i-arrow-up" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M4 20c0-8 6-14 16-16-2 10-8 16-16 16Z"/><path d="M8 16C12 12 15 9 18 6"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12"/><polyline points="7 11 12 16 17 11"/><path d="M5 21h14"/></symbol>
+<symbol id="i-store" viewBox="0 0 24 24"><path d="M4 10v10h16V10"/><path d="M2.5 10 5 4h14l2.5 6"/><rect x="9.5" y="14" width="5" height="6"/></symbol>
+<symbol id="i-map" viewBox="0 0 24 24"><path d="M12 22s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+<symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+<symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9.5"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+<symbol id="i-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></symbol>
+<symbol id="i-plus-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></symbol>
+<symbol id="i-bread" viewBox="0 0 24 24"><path d="M3 11c0-4.5 4-8 9-8s9 3.5 9 8v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-6Z"/><path d="M3 11h18"/></symbol>
+<symbol id="i-utensils" viewBox="0 0 24 24"><path d="M5 2v7a2 2 0 0 0 4 0V2"/><path d="M7 2v20"/><path d="M17 2c-1.5 2-1.5 6 0 8s0 6-1.5 8"/><path d="M17 2v18"/></symbol>
+<symbol id="i-cookie" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="9" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="10" cy="15" r="1" fill="currentColor" stroke="none"/><circle cx="15.5" cy="15" r="1" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-facebook" viewBox="0 0 24 24"><path d="M15 3h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></symbol>
+<symbol id="i-question" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.8 2.1c-.8.5-1.3 1-1.3 1.9v.5"/><circle cx="12" cy="17" r=".5" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-envelope" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></symbol>
+<symbol id="i-wallet" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h13a1 1 0 0 1 1 1v2"/><path d="M3 7v11a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1H5a2 2 0 0 1-2-2Z"/><circle cx="16.5" cy="14.5" r="1" fill="currentColor" stroke="none"/></symbol>
+</defs>
+</svg>
+
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+<div class="nav-container">
+<a href="index.html" class="logo" aria-label="mazgo"><span class="logo-icon"><img src="assets/brand/mazgo-wordmark-leaf.png" alt="mazgo"></span></a>
+<ul class="nav-links">
+<li><a href="#how" data-i18n="nav.how">Näin se toimii</a></li>
+<li><a href="#merchants" data-i18n="nav.merchants">Kauppiaille</a></li>
+<li><a href="blog.html" data-i18n="nav.blog">Blogi</a></li>
+<li><a href="#register" data-i18n="nav.join">Liity mukaan</a></li>
+<li><a href="#faq" data-i18n="nav.faq">UKK</a></li>
+</ul>
+<div class="nav-cta">
+<div class="lang-switch" role="group" aria-label="Kieli">
+<button type="button" data-lang="fi" class="active">Suomi</button>
+<button type="button" data-lang="en">EN</button>
+<button type="button" data-lang="ar">عربي</button>
+</div>
+<a href="#register" class="btn btn-primary" data-i18n="nav.register">Ilmoita liikkeesi</a>
+<a href="#" class="btn btn-ghost" data-i18n="nav.download">Lataa sovellus</a>
+</div>
+<button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Avaa valikko"><svg class="icon" aria-hidden="true"><use href="#i-bars"/></svg></button>
+</div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+<div class="mobile-menu" id="mobileMenu">
+<button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Sulje valikko"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+<ul>
+<li><a href="#how" data-i18n="nav.how">Näin se toimii</a></li>
+<li><a href="#merchants" data-i18n="nav.merchants">Kauppiaille</a></li>
+<li><a href="blog.html" data-i18n="nav.blog">Blogi</a></li>
+<li><a href="#register" data-i18n="nav.join">Liity mukaan</a></li>
+<li><a href="#faq" data-i18n="nav.faq">UKK</a></li>
+</ul>
+<div class="lang-switch" role="group" aria-label="Kieli">
+<button type="button" data-lang="fi" class="active">Suomi</button>
+<button type="button" data-lang="en">EN</button>
+<button type="button" data-lang="ar">عربي</button>
+</div>
+<a href="#register" class="btn btn-primary" data-i18n="nav.register">Ilmoita liikkeesi</a>
+<a href="#" class="btn btn-outline" data-i18n="nav.download">Lataa sovellus</a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+<div class="hero-bg-pattern"></div>
+<div class="hero-blob"></div>
+<div class="hero-blob-2"></div>
+<div class="hero-container">
+<div class="hero-content">
+<div class="hero-badge"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg><span data-i18n="home.badge">Säästä rahaa ja pelasta ruokaa</span></div>
+<h1 class="hero-title"><span data-i18n="home.title1">Osta päivän ylijäämä</span><br><span class="highlight" data-i18n="home.title2">vähintään 30 % alennuksella</span></h1>
+<p class="hero-desc" data-i18n="home.desc">mazgo näyttää lähistöllä olevat leipomot, ravintolat, kahvilat ja ruokakaupat, jotka myyvät päivän ylijäämän alennettuun hintaan ennen sulkemista.</p>
+<div class="hero-cta">
+<a href="#" class="btn btn-primary btn-lg"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span data-i18n="home.cta.app">Lataa sovellus</span></a>
+<a href="#register" class="btn btn-outline btn-lg"><svg class="icon" aria-hidden="true"><use href="#i-store"/></svg><span data-i18n="home.cta.merchant">Ilmoita liikkeesi</span></a>
+</div>
+<div class="hero-stats">
+<div class="hero-stat"><div class="hero-stat-number" data-i18n="home.stat1n">−30 %</div><div class="hero-stat-label" data-i18n="home.stat1l">alennus vähintään</div></div>
+<div class="hero-stat"><div class="hero-stat-number" data-i18n="home.stat2n">10 min</div><div class="hero-stat-label" data-i18n="home.stat2l">varausaika</div></div>
+<div class="hero-stat"><div class="hero-stat-number" data-i18n="home.stat3n">0 €</div><div class="hero-stat-label" data-i18n="home.stat3l">kuukausimaksu</div></div>
+</div>
+</div>
+<div class="hero-visual">
+<div class="floating-card discount"><span class="badge-discount" data-i18n="hv.discount">−50 %</span><div class="floating-sub" data-i18n="hv.discount.sub">tuoreita pullia</div></div>
+<div class="phone-mockup">
+<div class="phone-screen">
+<div class="phone-notch"></div>
+<img src="assets/screens/screen-feed.jpg" alt="mazgo-sovelluksen aloitusnäyttö" loading="lazy">
+</div>
+</div>
+<div class="floating-card saving"><div class="amount" data-i18n="hv.saving.amount">Säästä jopa 45 %</div><div class="label" data-i18n="hv.saving.label">keskimääräinen kuukausisäästö</div></div>
+</div>
+</div>
+</section>
+
+<!-- How It Works -->
+<section class="section how-it-works" id="how">
+<div class="section-header animate-on-scroll">
+<div class="section-label" data-i18n="how.label">Näin se toimii</div>
+<h2 class="section-title" data-i18n="how.title">Kolme yksinkertaista askelta</h2>
+<p class="section-desc" data-i18n="how.desc">Selaa, osta ja nouda. Yhtä helppoa kuin miltä kuulostaakin.</p>
+</div>
+<div class="hiw-steps">
+<div class="step-card animate-on-scroll">
+<div class="step-num">1</div>
+<div class="step-icon">&#128506;&#65039;</div>
+<h3 data-i18n="how.s1.t">Selaa lähellä olevia tarjouksia</h3>
+<p data-i18n="how.s1.p">Avaa kartta ja katso, mitkä leipomot ja ravintolat myyvät päivän ylijäämää alennettuun hintaan.</p>
+<span class="step-tag" data-i18n="how.s1.tag">Todellinen kartta Suomessa</span>
+</div>
+<div class="step-card animate-on-scroll">
+<div class="step-num">2</div>
+<div class="step-icon">&#128179;</div>
+<h3 data-i18n="how.s2.t">Osta ja maksa</h3>
+<p data-i18n="how.s2.p">Valitse mieluinen tarjous ja maksa MobilePaylla tai pankkikortilla.</p>
+<span class="step-tag" data-i18n="how.s2.tag">10 minuutin varaus</span>
+</div>
+<div class="step-card animate-on-scroll">
+<div class="step-num">3</div>
+<div class="step-icon">&#129309;</div>
+<h3 data-i18n="how.s3.t">Nouda tilauksesi</h3>
+<p data-i18n="how.s3.p">Mene liikkeeseen noutoaikana ja näytä myyjälle elävä noutokoodi.</p>
+<span class="step-tag" data-i18n="how.s3.tag">Elävä noutokoodi</span>
+</div>
+</div>
+</section>
+
+<!-- First-year goals -->
+<section class="stats-bar" id="goals">
+<div class="section-header animate-on-scroll" style="margin-bottom:20px">
+<div class="section-label" data-i18n="goals.label">Rehellisesti</div>
+<h2 class="section-title" style="font-size:1.9rem" data-i18n="goals.title">Ensimmäisen vuoden tavoitteemme</h2>
+<p class="section-desc" data-i18n="goals.desc">Emme keksi valmiita saavutuksia — nämä ovat tavoitteet, joihin työskentelemme ensimmäisen vuoden aikana Suomessa.</p>
+</div>
+<div class="stats-container">
+<div class="stat-item animate-on-scroll"><svg class="icon" aria-hidden="true"><use href="#i-store"/></svg><div class="stat-number" data-target="25">0</div><div class="stat-label" data-i18n="goals.s1l">kumppaniliikettä</div></div>
+<div class="stat-item animate-on-scroll"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><div class="stat-number" data-target="1000">0</div><div class="stat-label" data-i18n="goals.s2l">aktiivista käyttäjää</div></div>
+<div class="stat-item animate-on-scroll"><svg class="icon" aria-hidden="true"><use href="#i-cart"/></svg><div class="stat-number" data-target="10000">0</div><div class="stat-label" data-i18n="goals.s3l">pelastettua tilausta</div></div>
+<div class="stat-item animate-on-scroll"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg><div class="stat-number" data-target="4000">0</div><div class="stat-label" data-i18n="goals.s4l">pelastettua ruokaa (kg)</div></div>
+</div>
+</section>
+
+<!-- Environmental Impact -->
+<section class="section impact" id="impact">
+<div class="section-header animate-on-scroll">
+<div class="section-label" data-i18n="impact.label">Miksi tämä on tärkeää</div>
+<h2 class="section-title" data-i18n="impact.title">Odotettu ympäristövaikutuksemme</h2>
+<p class="section-desc" data-i18n="impact.desc">Ruokahävikin koko Suomessa ja maailmalla — ja se osa, johon mazgo vaikuttaa suoraan.</p>
+</div>
+<div class="impact-grid">
+<div class="impact-card animate-on-scroll"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg><div class="impact-num" data-i18n="impact.c1n">n. 400 milj. kg</div><div class="impact-label" data-i18n="impact.c1l">syömäkelpoista ruokaa päätyy hävikkiin Suomen ruokaketjussa vuodessa (Luke 2022)</div></div>
+<div class="impact-card animate-on-scroll"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><div class="impact-num" data-i18n="impact.c2n">28 kg</div><div class="impact-label" data-i18n="impact.c2l">kotitalouksien ruokahävikki henkeä kohti vuodessa Suomessa (Luke 2021)</div></div>
+<div class="impact-card animate-on-scroll"><svg class="icon" aria-hidden="true"><use href="#i-store"/></svg><div class="impact-num" data-i18n="impact.c3n">17 %</div><div class="impact-label" data-i18n="impact.c3l">ravintoloiden ja ruokapalveluiden osuus kotimaisesta ruokahävikistä</div></div>
+<div class="impact-card animate-on-scroll"><svg class="icon" aria-hidden="true"><use href="#i-cart"/></svg><div class="impact-num" data-i18n="impact.c4n">1/3</div><div class="impact-label" data-i18n="impact.c4l">maailmanlaajuisesti tuotetusta ruoasta päätyy hävikkiin (UNEP)</div></div>
+</div>
+<p class="impact-role" data-i18n="impact.role">mazgo ei ratkaise koko ruokahävikkiä — mutta se vaikuttaa suoraan yhteen sen osaan: valmiiseen ruokaan, joka päätyisi roskiin ennen liikkeen sulkemista.</p>
+<p class="impact-source" data-i18n="impact.source">Lähteet: Luonnonvarakeskus (Luke) — ruokahävikki 2021–2022 · UNEP Food Waste Index</p>
+</section>
+
+<!-- Blog Preview -->
+<section class="section" id="blog-preview" style="background:var(--cream)">
+<div class="section-header animate-on-scroll">
+<div class="section-label" data-i18n="blogprev.label">Blogistamme</div>
+<h2 class="section-title" data-i18n="blogprev.title">Kirjoitamme ruokahävikin vähentämisestä</h2>
+<p class="section-desc" data-i18n="blogprev.desc">Artikkeleita ja tutkittua tietoa ruokahävikistä Suomessa ja maailmalla.</p>
+</div>
+<div class="blog-grid blog-grid-3">
+<div class="blog-card animate-on-scroll">
+<a href="blog-finland-food-waste.html"><img class="blog-card-img" src="assets/blog/finland-food-waste.jpg" alt="Suomalainen keittiö ja ruokahävikki" loading="lazy"></a>
+<div class="blog-card-body">
+<span class="blog-card-tag" data-i18n="blog.c1.tag">Kulttuuri ja tavat</span>
+<h3><a href="blog-finland-food-waste.html" data-i18n="blog.c1.title">Miksi Suomi heittää ruokaa roskiin — tietoisuudesta huolimatta?</a></h3>
+<p data-i18n="blog.c1.ex">Suomalaiset tuntevat hävikkiluvut, mutta ruokaa päätyy silti biojätteeseen lähes 400 miljoonaa kiloa vuodessa.</p>
+<a href="blog-finland-food-waste.html" class="blog-card-link"><span data-i18n="blog.read">Lue artikkeli</span> ←</a>
+</div>
+</div>
+<div class="blog-card animate-on-scroll">
+<a href="blog-global-food-waste-numbers.html"><img class="blog-card-img" src="assets/blog/global-food-waste.jpg" alt="Ruokahävikki kauppojen jätteessä" loading="lazy"></a>
+<div class="blog-card-body">
+<span class="blog-card-tag" data-i18n="blog.c2.tag">Raportit ja luvut</span>
+<h3><a href="blog-global-food-waste-numbers.html" data-i18n="blog.c2.title">Maailman ruokahävikki lukuina: UNEP:n raportti</a></h3>
+<p data-i18n="blog.c2.ex">1,05 miljardia tonnia ruokaa vuodessa. UNEP:n tuoreimmat luvut kertovat hävikin määrästä, jakautumisesta ja ilmastovaikutuksista.</p>
+<a href="blog-global-food-waste-numbers.html" class="blog-card-link"><span data-i18n="blog.read">Lue artikkeli</span> ←</a>
+</div>
+</div>
+<div class="blog-card animate-on-scroll">
+<a href="blog-best-before-dates.html"><img class="blog-card-img" src="assets/blog/best-before.jpg" alt="Elintarvikkeiden päiväysmerkinnät" loading="lazy"></a>
+<div class="blog-card-body">
+<span class="blog-card-tag" data-i18n="blog.c3.tag">Käytännön vinkit</span>
+<h3><a href="blog-best-before-dates.html" data-i18n="blog.c3.title">"Parasta ennen" ei tarkoita "pilaantunutta"</a></h3>
+<p data-i18n="blog.c3.ex">Suuri osa ruoasta on syömäkelpoista päiväyksen jälkeen. Näin luet pakkausmerkintöjä oikein.</p>
+<a href="blog-best-before-dates.html" class="blog-card-link"><span data-i18n="blog.read">Lue artikkeli</span> ←</a>
+</div>
+</div>
+</div>
+<div style="text-align:center;margin-top:36px" class="animate-on-scroll">
+<a href="blog.html" class="btn btn-outline" data-i18n="blog.all">Kaikki artikkelit</a>
+</div>
+</section>
+
+<!-- For Merchants -->
+<section class="section for-merchants" id="merchants">
+<div class="section-header animate-on-scroll">
+<div class="section-label" data-i18n="mer.label">Kauppiaille</div>
+<h2 class="section-title" data-i18n="mer.title">Muuta ylijäämä lisätuloiksi</h2>
+<p class="section-desc" data-i18n="mer.desc">Miksi heittäisit pois tuoretta tavaraa? Ilmoita liikkeesi mazgossa ja ala myydä päivän ylijäämää minuuteissa.</p>
+</div>
+<div class="merchants-container">
+<div class="merchants-content animate-on-scroll">
+<h3 data-i18n="mer.h3">Miksi myydä mazgon kautta?</h3>
+<ul class="merchants-features">
+<li><i class="fas fa-percentage"></i><span><strong data-i18n="mer.f1.t">Ei kuukausimaksuja</strong><br><span data-i18n="mer.f1.p">Vain 20 %:n provisio toteutuneista myynneistä. Et maksa mitään, jos et myy.</span></span></li>
+<li><i class="fas fa-bolt"></i><span><strong data-i18n="mer.f2.t">Nopea julkaisu</strong><br><span data-i18n="mer.f2.p">Julkaise tarjous valmiista pohjasta: tuote, alkuperäinen ja alennettu hinta, annosten määrä ja noutoaika.</span></span></li>
+<li><i class="fas fa-users"></i><span><strong data-i18n="mer.f3.t">Uusia asiakkaita</strong><br><span data-i18n="mer.f3.p">Tavoita uusi yleisö, joka löytää liikkeesi.</span></span></li>
+<li><i class="fas fa-money-bill-transfer"></i><span><strong data-i18n="mer.f4.t">Viikoittainen tilitys</strong><br><span data-i18n="mer.f4.p">Tilitys kerran viikossa, selkeästi eriteltynä.</span></span></li>
+<li><i class="fas fa-shield-halved"></i><span><strong data-i18n="mer.f5.t">Väärinkäytössuoja</strong><br><span data-i18n="mer.f5.p">Määrät varataan reaaliajassa ja kaikki arkaluontoinen kirjoitus kulkee suojattujen tietokantafunktioiden kautta.</span></span></li>
+<li><i class="fas fa-star"></i><span><strong data-i18n="mer.f6.t">Arvostelut ja luottamus</strong><br><span data-i18n="mer.f6.p">Rakenna mainettasi jokaisen onnistuneen tilauksen myötä.</span></span></li>
+</ul>
+<div class="merchant-stats-row">
+<div class="m-stat"><b data-i18n="mer.stat1b">20 %</b><span data-i18n="mer.stat1l">provisio vain myydystä</span></div>
+<div class="m-stat"><b data-i18n="mer.stat2b">7 pv</b><span data-i18n="mer.stat2l">tilitysväli</span></div>
+<div class="m-stat"><b data-i18n="mer.stat3b">0 €</b><span data-i18n="mer.stat3l">kiinteät kuukausikulut</span></div>
+</div>
+<a href="#register" class="btn btn-primary btn-lg"><svg class="icon" aria-hidden="true"><use href="#i-store"/></svg><span data-i18n="mer.cta">Ilmoita liikkeesi nyt</span></a>
+</div>
+<div class="merchants-visual animate-on-scroll">
+<div class="merchant-phone">
+<div class="m-screen">
+<div class="phone-notch"></div>
+<div class="m-content">
+<div class="m-header"><h4 data-i18n="mm.header">mazgo Kauppiaille</h4><div class="m-avatar">M</div></div>
+<div class="m-stats-mini">
+<div class="m-stat-mini"><b data-i18n="mm.stat1b">1 240 €</b><span data-i18n="mm.stat1l">myynti tällä viikolla</span></div>
+<div class="m-stat-mini"><b data-i18n="mm.stat2b">86</b><span data-i18n="mm.stat2l">tilausta</span></div>
+</div>
+<div class="m-offer-form">
+<h5><svg class="icon" aria-hidden="true"><use href="#i-plus-circle"/></svg><span data-i18n="mm.form.title">Julkaise uusi tarjous</span></h5>
+<div class="m-field"><span data-i18n="mm.f1">Tuote</span><b data-i18n="mm.f1v">Yllätyspussi</b></div>
+<div class="m-field"><span data-i18n="mm.f2">Alkuperäinen hinta</span><b data-i18n="mm.f2v">12,00 €</b></div>
+<div class="m-field"><span data-i18n="mm.f3">Tarjoushinta (−42 %)</span><b class="filled" data-i18n="mm.f3v">7,00 €</b></div>
+<div class="m-field"><span data-i18n="mm.f4">Annoksia</span><b data-i18n="mm.f4v">5</b></div>
+<div class="m-field"><span data-i18n="mm.f5">Noutoaika</span><b data-i18n="mm.f5v">18.30–19.30</b></div>
+<button class="m-publish" type="button" tabindex="-1" aria-hidden="true" data-i18n="mm.publish">Julkaise tarjous nyt</button>
+</div>
+</div>
+</div>
+</div>
+<div class="new-order-badge"><div class="bell"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></div><p><strong data-i18n="mm.badge.t">Uusi tilaus!</strong><span data-i18n="mm.badge.b">Yllätyspussi × 1</span></p></div>
+<div class="earn-badge"><div class="amount" data-i18n="mm.earn.amount">+ 950 €</div><div class="label" data-i18n="mm.earn.label">viime viikon lisätulo</div></div>
+</div>
+</div>
+</section>
+
+<!-- Merchant onboarding strip -->
+<div class="m-steps">
+<div class="m-steps-grid">
+<div class="m-step animate-on-scroll"><div class="m-step-icon"><i class="fas fa-user-plus"></i></div><div><h5 data-i18n="msteps.s1.t">Täytä tietosi</h5><p data-i18n="msteps.s1.p">Yksinkertainen lomake, kaksi minuuttia</p></div></div>
+<div class="m-step animate-on-scroll"><div class="m-step-icon"><i class="fas fa-check-double"></i></div><div><h5 data-i18n="msteps.s2.t">Aktivoi tilisi</h5><p data-i18n="msteps.s2.p">Tiimimme ottaa yhteyttä 24 tunnin sisällä</p></div></div>
+<div class="m-step animate-on-scroll"><div class="m-step-icon"><i class="fas fa-rocket"></i></div><div><h5 data-i18n="msteps.s3.t">Aloita myynti</h5><p data-i18n="msteps.s3.p">Julkaise ensimmäinen tarjouksesi</p></div></div>
+</div>
+</div>
+
+<!-- Merchant Registration -->
+<section class="section merchant-register" id="register">
+<div class="section-header animate-on-scroll">
+<div class="section-label" data-i18n="reg.label">Liity mukaan</div>
+<h2 class="section-title" data-i18n="reg.title">Rekisteröi liikkeesi mazgossa</h2>
+<p class="section-desc" data-i18n="reg.desc">Täytä lomake, niin otamme sinuun yhteyttä 24 tunnin sisällä tilin aktivoimiseksi.</p>
+</div>
+<div class="register-container">
+<div class="register-card animate-on-scroll">
+<div class="register-info">
+<h3 data-i18n="reg.h3">Aloita matkasi kanssamme</h3>
+<p data-i18n="reg.p">Leipomo, ravintola, kahvila tai ruokakauppa — mazgo auttaa sinua myymään päivän ylijäämän sen päätymisen roskiin sijaan.</p>
+<ul class="register-benefits">
+<li><i><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg></i> <span data-i18n="reg.b1">Ei kuukausi- tai liittymismaksuja</span></li>
+<li><i><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg></i> <span data-i18n="reg.b2">Vain 20 % provisio myydystä</span></li>
+<li><i><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg></i> <span data-i18n="reg.b3">Maksu MobilePaylla tai kortilla</span></li>
+<li><i><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg></i> <span data-i18n="reg.b4">Tuki suomeksi, englanniksi ja arabiaksi</span></li>
+<li><i><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg></i> <span data-i18n="reg.b5">Viikoittainen, läpinäkyvä tilitys</span></li>
+</ul>
+<div class="reg-steps">
+<h6 data-i18n="reg.steps.h">Rekisteröitymisen vaiheet</h6>
+<div class="reg-step"><b>1</b> <span data-i18n="reg.r1">Täytä lomake (2 min)</span></div>
+<div class="reg-step"><b>2</b> <span data-i18n="reg.r2">Varmistusviesti tiimiltämme</span></div>
+<div class="reg-step"><b>3</b> <span data-i18n="reg.r3">Aktivoi tilisi ja ala myydä</span></div>
+</div>
+</div>
+<form id="merchantForm" novalidate>
+<div class="form-row">
+<div class="form-group"><label for="f-owner"><span data-i18n="form.owner">Liikkeen omistajan nimi</span> <span class="req">*</span></label><input id="f-owner" type="text" name="owner_name" data-i18n-ph="form.owner.ph" placeholder="esim. Maija Meikäläinen" required><div class="err-msg" data-i18n="form.owner.err">Anna omistajan nimi (vähintään 3 merkkiä)</div></div>
+<div class="form-group"><label for="f-phone"><span data-i18n="form.phone">Puhelinnumero</span> <span class="req">*</span></label><input id="f-phone" type="tel" name="phone" data-i18n-ph="form.phone.ph" placeholder="+358 40 123 4567" dir="ltr" required><div class="hint" data-i18n="form.phone.hint">Suomalainen numero, alkaa +358 tai 0</div><div class="err-msg" data-i18n="form.phone.err">Anna kelvollinen suomalainen puhelinnumero</div></div>
+</div>
+<div class="form-group"><label for="f-store"><span data-i18n="form.store">Liikkeen nimi</span> <span class="req">*</span></label><input id="f-store" type="text" name="store_name" data-i18n-ph="form.store.ph" placeholder="esim. Kallion Leipomo" required><div class="err-msg" data-i18n="form.store.err">Anna liikkeen nimi</div></div>
+<div class="form-row">
+<div class="form-group"><label for="f-category"><span data-i18n="form.cat">Toimialatyyppi</span> <span class="req">*</span></label><select id="f-category" name="category" required><option value="" data-i18n="form.cat.ph">Valitse tyyppi</option><option value="bakery" data-i18n="form.cat.bakery">Leipomo</option><option value="restaurant" data-i18n="form.cat.restaurant">Ravintola</option><option value="cafe" data-i18n="form.cat.cafe">Kahvila</option><option value="sweets" data-i18n="form.cat.sweets">Konditoria</option><option value="grocery" data-i18n="form.cat.grocery">Ruokakauppa</option><option value="other" data-i18n="form.cat.other">Muu</option></select><div class="err-msg" data-i18n="form.cat.err">Valitse toimialatyyppi</div></div>
+<div class="form-group"><label for="f-city"><span data-i18n="form.city">Kaupunki</span> <span class="req">*</span></label><select id="f-city" name="city" required><option value="" data-i18n="form.city.ph">Valitse kaupunki</option><option value="helsinki" data-i18n="form.city.helsinki">Helsinki</option><option value="espoo" data-i18n="form.city.espoo">Espoo</option><option value="vantaa" data-i18n="form.city.vantaa">Vantaa</option><option value="tampere" data-i18n="form.city.tampere">Tampere</option><option value="turku" data-i18n="form.city.turku">Turku</option><option value="oulu" data-i18n="form.city.oulu">Oulu</option><option value="other" data-i18n="form.city.other">Muu</option></select><div class="err-msg" data-i18n="form.city.err">Valitse kaupunki</div></div>
+</div>
+<div class="form-group"><label for="f-address"><span data-i18n="form.address">Katuosoite</span></label><input id="f-address" type="text" name="address" data-i18n-ph="form.address.ph" placeholder="Katu ja numero, kaupunginosa"></div>
+<div class="form-row">
+<div class="form-group"><label for="f-hours"><span data-i18n="form.hours">Aukioloajat</span></label><select id="f-hours" name="hours"><option value="" data-i18n="form.hours.ph">Valitse ajanjakso</option><option value="morning" data-i18n="form.hours.morning">Aamu (6–14)</option><option value="evening" data-i18n="form.hours.evening">Ilta (14–22)</option><option value="allday" data-i18n="form.hours.allday">Koko päivä</option></select></div>
+<div class="form-group"><label for="f-payout"><span data-i18n="form.payout">Tilitystapa</span></label><select id="f-payout" name="payout"><option value="" data-i18n="form.payout.ph">Valitse tapa</option><option value="bank" data-i18n="form.payout.bank">Tilisiirto</option></select></div>
+</div>
+<div class="form-group"><label for="f-email"><span data-i18n="form.email">Sähköposti</span></label><input id="f-email" type="email" name="email" data-i18n-ph="form.email.ph" placeholder="nimi@esimerkki.fi" dir="ltr"><div class="err-msg" data-i18n="form.email.err">Sähköpostiosoite on virheellinen</div></div>
+<div class="form-group"><label for="f-notes"><span data-i18n="form.notes">Lisätiedot</span></label><textarea id="f-notes" name="notes" data-i18n-ph="form.notes.ph" placeholder="Kerro lisää liikkeestäsi…"></textarea></div>
+<button type="submit" class="btn btn-primary form-submit" id="submitBtn"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg><span data-i18n="form.submit">Lähetä hakemus</span></button>
+<p class="form-note"><span data-i18n="form.note">Lähettämällä tämän lomakkeen hyväksyt</span> <a href="terms.html" data-i18n="form.note.link">käyttöehdot</a>.</p>
+</form>
+</div>
+</div>
+</section>
+
+<!-- Testimonials -->
+<section class="section testimonials">
+<div class="section-header animate-on-scroll">
+<div class="section-label" data-i18n="tst.label">Käyttäjien ääni</div>
+<h2 class="section-title" data-i18n="tst.title">Mitä ihmiset sanovat mazgosta?</h2>
+</div>
+<div class="testimonials-grid">
+<div class="testimonial-card animate-on-scroll">
+<div class="stars" aria-label="5 / 5">
+<i><svg class="icon icon-solid" aria-hidden="true"><use href="#i-star"/></svg></i><i><svg class="icon icon-solid" aria-hidden="true"><use href="#i-star"/></svg></i><i><svg class="icon icon-solid" aria-hidden="true"><use href="#i-star"/></svg></i><i><svg class="icon icon-solid" aria-hidden="true"><use href="#i-star"/></svg></i><i><svg class="icon icon-solid" aria-hidden="true"><use href="#i-star"/></svg></i>
+</div>
+<div class="testimonial-quote">"</div>
+<p class="testimonial-text" data-i18n="tst.1.text">Saan nyt tuoreet pullat lähileipomosta alle puoleen hintaan joka viikko.</p>
+<div class="testimonial-author"><div class="author-avatar">A</div><div class="author-info"><h4 data-i18n="tst.1.author">Aino Korhonen</h4><p data-i18n="tst.1.role">asiakas Helsingistä</p></div></div>
+</div>
+<div class="testimonial-card animate-on-scroll">
+<div class="stars" aria-label="5 / 5">
+<i><svg class="icon icon-solid" aria-hidden="true"><use href="#i-star"/></svg></i><i><svg class="icon icon-solid" aria-hidden="true"><use href="#i-star"/></svg></i><i><svg class="icon icon-solid" aria-hidden="true"><use href="#i-star"/></svg></i><i><svg class="icon icon-solid" aria-hidden="true"><use href="#i-star"/></svg></i><i><svg class="icon icon-solid" aria-hidden="true"><use href="#i-star"/></svg></i>
+</div>
+<div class="testimonial-quote">"</div>
+<p class="testimonial-text" data-i18n="tst.2.text">Ennen heitimme päivän ylijäämän roskiin joka ilta. Nyt myymme kaiken ja saamme lisätuloa.</p>
+<div class="testimonial-author"><div class="author-avatar">Y</div><div class="author-info"><h4 data-i18n="tst.2.author">Yousef Haddad</h4><p data-i18n="tst.2.role">leipomon omistaja Kalliossa</p></div></div>
+</div>
+<div class="testimonial-card animate-on-scroll">
+<div class="stars" aria-label="4.5 / 5">
+<i><svg class="icon icon-solid" aria-hidden="true"><use href="#i-star"/></svg></i><i><svg class="icon icon-solid" aria-hidden="true"><use href="#i-star"/></svg></i><i><svg class="icon icon-solid" aria-hidden="true"><use href="#i-star"/></svg></i><i><svg class="icon icon-solid" aria-hidden="true"><use href="#i-star"/></svg></i><i><span class="star-half"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon icon-solid star-half-fill" aria-hidden="true"><use href="#i-star"/></svg></span></i>
+</div>
+<div class="testimonial-quote">"</div>
+<p class="testimonial-text" data-i18n="tst.3.text">Hienoa, että vähennämme ruokahävikkiä ja säästämme rahaa samaan aikaan.</p>
+<div class="testimonial-author"><div class="author-avatar">M</div><div class="author-info"><h4 data-i18n="tst.3.author">Mikko Laine</h4><p data-i18n="tst.3.role">opiskelija</p></div></div>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq" id="faq">
+<div class="section-header animate-on-scroll">
+<div class="section-label" data-i18n="faq.label">Usein kysytyt kysymykset</div>
+<h2 class="section-title" data-i18n="faq.title">Onko sinulla kysymys?</h2>
+<p class="section-desc" data-i18n="faq.desc">Tässä vastauksia yleisimpiin kysymyksiin.</p>
+</div>
+<div class="faq-container">
+<div class="faq-item animate-on-scroll">
+<button class="faq-question" onclick="toggleFaq(this)"><span data-i18n="faq.q1">Kuinka suuri alennus tarjouksissa on?</span><span class="fq-icon"><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></span></button>
+<div class="faq-answer"><p data-i18n="faq.a1">Vähimmäisalennus on 30 %, mutta monet liikkeet myyvät jopa 50–70 %:n alennuksella.</p></div>
+</div>
+<div class="faq-item animate-on-scroll">
+<button class="faq-question" onclick="toggleFaq(this)"><span data-i18n="faq.q2">Miten maksaminen tapahtuu?</span><span class="fq-icon"><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></span></button>
+<div class="faq-answer"><p data-i18n="faq.a2">Maksa MobilePaylla tai pankkikortilla suoraan sovelluksessa.</p></div>
+</div>
+<div class="faq-item animate-on-scroll">
+<button class="faq-question" onclick="toggleFaq(this)"><span data-i18n="faq.q3">Mitä jos en pääsekään noutamaan tilaustani?</span><span class="fq-icon"><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></span></button>
+<div class="faq-answer"><p data-i18n="faq.a3">Ilmoita siitä sovelluksessa — viisi ilmoitustyyppiä suojaa sinua virheelliseltä merkinnältä.</p></div>
+</div>
+<div class="faq-item animate-on-scroll">
+<button class="faq-question" onclick="toggleFaq(this)"><span data-i18n="faq.q4">Mikä on mazgon provisio kauppiaille?</span><span class="fq-icon"><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></span></button>
+<div class="faq-answer"><p data-i18n="faq.a4">Provisio on 20 % toteutuneista myynneistä, tilitys kerran viikossa.</p></div>
+</div>
+<div class="faq-item animate-on-scroll">
+<button class="faq-question" onclick="toggleFaq(this)"><span data-i18n="faq.q5">Millaiset liikkeet voivat liittyä?</span><span class="fq-icon"><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></span></button>
+<div class="faq-answer"><p data-i18n="faq.a5">Kaikki liikkeet, joilla on päivittäistä ylijäämää — tärkeintä on, että ruoka on syömäkelpoista.</p></div>
+</div>
+<div class="faq-item animate-on-scroll">
+<button class="faq-question" onclick="toggleFaq(this)"><span data-i18n="faq.q6">Kuinka pitkä varausaika on?</span><span class="fq-icon"><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></span></button>
+<div class="faq-answer"><p data-i18n="faq.a6">Varaus kestää 10 minuuttia, jonka jälkeen tarjous vapautuu kaikille.</p></div>
+</div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+<div class="cta-content">
+<h2 data-i18n="cta.title">Valmis säästämään?</h2>
+<p data-i18n="cta.desc">Lataa sovellus nyt ja löydä lähellä olevat tarjoukset. Tai rekisteröi liikkeesi ja muuta ylijäämä lisätuloiksi.</p>
+<div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+<a href="#" class="btn btn-primary btn-lg"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span data-i18n="home.cta.app">Lataa sovellus</span></a>
+<a href="#register" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,.4);color:#fff"><svg class="icon" aria-hidden="true"><use href="#i-store"/></svg><span data-i18n="home.cta.merchant">Ilmoita liikkeesi</span></a>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+<div class="footer-container">
+<div class="footer-brand">
+<a href="index.html" class="logo" aria-label="mazgo"><span class="logo-icon"><img src="assets/brand/mazgo-wordmark-white.png" alt="mazgo"></span></a>
+<p data-i18n="footer.tag">mazgo yhdistää sinut lähellä oleviin leipomoihin, ravintoloihin ja kahviloihin.</p>
+<div class="footer-social">
+<a href="#" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+<a href="#" aria-label="Facebook"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+<a href="#" aria-label="X"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></a>
+<a href="#" aria-label="Telegram"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg></a>
+</div>
+</div>
+<div class="footer-col">
+<h4 data-i18n="footer.app">Sovellus</h4>
+<ul>
+<li><a href="#how" data-i18n="nav.how">Näin se toimii</a></li>
+<li><a href="#" data-i18n="nav.download">Lataa sovellus</a></li>
+<li><a href="terms.html" data-i18n="footer.terms">Käyttöehdot</a></li>
+<li><a href="privacy.html" data-i18n="footer.privacy">Tietosuojaseloste</a></li>
+<li><a href="delete-account.html" data-i18n="footer.delete">Tilin poistaminen</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4 data-i18n="footer.forMerchants">Kauppiaille</h4>
+<ul>
+<li><a href="#register" data-i18n="nav.register">Ilmoita liikkeesi</a></li>
+<li><a href="#merchants" data-i18n="nav.merchants">Kauppiaille</a></li>
+<li><a href="help.html" data-i18n="footer.help">Ohjekeskus</a></li>
+<li><a href="pricing.html" data-i18n="footer.pricing">Hinnasto ja provisio</a></li>
+<li><a href="blog.html" data-i18n="nav.blog">Blogi</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4 data-i18n="footer.contact">Yhteystiedot</h4>
+<ul>
+<li class="plain" data-i18n="footer.email">tuki@mazgo.fi</li>
+<li class="plain" data-i18n="footer.phone">+358 40 123 4567</li>
+<li class="plain" data-i18n="footer.city">Helsinki, Suomi</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<div data-i18n="footer.rights">© 2026 mazgo. Kaikki oikeudet pidätetään.</div>
+<div data-i18n="footer.made">Suunniteltu Suomessa</div>
+</div>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status"><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg><span id="toastMsg">Valmis!</span></div>
+
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Takaisin ylös"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg></button>
+<script src="i18n.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

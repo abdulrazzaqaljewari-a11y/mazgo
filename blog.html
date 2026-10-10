@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fi" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blogi — mazgo</title>
+<meta name="description" content="mazgo-blogi: artikkeleita ruokahävikistä Suomessa ja maailmalla sekä sen vähentämisestä.">
+<link rel="icon" type="image/png" href="assets/brand/mazgo-mark-bag.png">
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-title-key="blog.title">
+<div id="progress"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<defs>
+<symbol id="i-bars" viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></symbol>
+<symbol id="i-arrow-up" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M4 20c0-8 6-14 16-16-2 10-8 16-16 16Z"/><path d="M8 16C12 12 15 9 18 6"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12"/><polyline points="7 11 12 16 17 11"/><path d="M5 21h14"/></symbol>
+<symbol id="i-store" viewBox="0 0 24 24"><path d="M4 10v10h16V10"/><path d="M2.5 10 5 4h14l2.5 6"/><rect x="9.5" y="14" width="5" height="6"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+<symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></symbol>
+<symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9.5"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
+<symbol id="i-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
+<symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-facebook" viewBox="0 0 24 24"><path d="M15 3h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></symbol>
+<symbol id="i-question" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.8 2.1c-.8.5-1.3 1-1.3 1.9v.5"/><circle cx="12" cy="17" r=".5" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-envelope" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></symbol>
+<symbol id="i-warning" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3Z"/><line x1="12" y1="10" x2="12" y2="14"/><circle cx="12" cy="17" r=".5" fill="currentColor" stroke="none"/></symbol>
+</defs>
+</svg>
+
+<nav class="navbar" id="navbar">
+<div class="nav-container">
+<a href="index.html" class="logo" aria-label="mazgo"><span class="logo-icon"><img src="assets/brand/mazgo-wordmark-leaf.png" alt="mazgo"></span></a>
+<ul class="nav-links">
+<li><a href="index.html#how" data-i18n="nav.how">Näin se toimii</a></li>
+<li><a href="index.html#merchants" data-i18n="nav.merchants">Kauppiaille</a></li>
+<li><a href="blog.html" data-i18n="nav.blog">Blogi</a></li>
+<li><a href="index.html#register" data-i18n="nav.join">Liity mukaan</a></li>
+<li><a href="index.html#faq" data-i18n="nav.faq">UKK</a></li>
+</ul>
+<div class="nav-cta">
+<div class="lang-switch" role="group" aria-label="Kieli">
+<button type="button" data-lang="fi" class="active">Suomi</button>
+<button type="button" data-lang="en">EN</button>
+<button type="button" data-lang="ar">عربي</button>
+</div>
+<a href="index.html#register" class="btn btn-primary" data-i18n="nav.register">Ilmoita liikkeesi</a>
+<a href="#" class="btn btn-ghost" data-i18n="nav.download">Lataa sovellus</a>
+</div>
+<button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Avaa valikko"><svg class="icon" aria-hidden="true"><use href="#i-bars"/></svg></button>
+</div>
+</nav>
+
+<div class="mobile-menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+<div class="mobile-menu" id="mobileMenu">
+<button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Sulje valikko"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+<ul>
+<li><a href="index.html#how" data-i18n="nav.how">Näin se toimii</a></li>
+<li><a href="index.html#merchants" data-i18n="nav.merchants">Kauppiaille</a></li>
+<li><a href="blog.html" data-i18n="nav.blog">Blogi</a></li>
+<li><a href="index.html#register" data-i18n="nav.join">Liity mukaan</a></li>
+<li><a href="index.html#faq" data-i18n="nav.faq">UKK</a></li>
+</ul>
+<div class="lang-switch" role="group" aria-label="Kieli">
+<button type="button" data-lang="fi" class="active">Suomi</button>
+<button type="button" data-lang="en">EN</button>
+<button type="button" data-lang="ar">عربي</button>
+</div>
+<a href="index.html#register" class="btn btn-primary" data-i18n="nav.register">Ilmoita liikkeesi</a>
+<a href="#" class="btn btn-outline" data-i18n="nav.download">Lataa sovellus</a>
+</div>
+
+
+<section class="section legal-page" style="padding-top:140px;padding-bottom:60px">
+<div class="section-header animate-on-scroll" style="margin-bottom:40px">
+<a href="index.html" class="legal-back" style="display:inline-flex;margin-bottom:12px"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg><span data-i18n="legal.back">Etusivulle</span></a>
+<h1 class="section-title" data-i18n="blog.h1">Blogi</h1>
+<p class="section-desc" data-i18n="blog.desc">Artikkeleita ruokahävikistä ja sen vähentämisestä.</p>
+</div>
+<div class="blog-grid">
+<div class="blog-card animate-on-scroll">
+<a href="blog-finland-food-waste.html"><img class="blog-card-img" src="assets/blog/finland-food-waste.jpg" alt="Suomalainen keittiö ja ruokahävikki" loading="lazy"></a>
+<div class="blog-card-body">
+<span class="blog-card-tag" data-i18n="blog.c1.tag"></span>
+<h3><a href="blog-finland-food-waste.html" data-i18n="blog.c1.title"></a></h3>
+<p data-i18n="blog.c1.ex"></p>
+<a href="blog-finland-food-waste.html" class="blog-card-link"><span data-i18n="blog.read">Lue artikkeli</span> ←</a>
+</div>
+</div>
+<div class="blog-card animate-on-scroll">
+<a href="blog-global-food-waste-numbers.html"><img class="blog-card-img" src="assets/blog/global-food-waste.jpg" alt="Ruokahävikki kauppojen jätteessä" loading="lazy"></a>
+<div class="blog-card-body">
+<span class="blog-card-tag" data-i18n="blog.c2.tag"></span>
+<h3><a href="blog-global-food-waste-numbers.html" data-i18n="blog.c2.title"></a></h3>
+<p data-i18n="blog.c2.ex"></p>
+<a href="blog-global-food-waste-numbers.html" class="blog-card-link"><span data-i18n="blog.read">Lue artikkeli</span> ←</a>
+</div>
+</div>
+<div class="blog-card animate-on-scroll">
+<a href="blog-best-before-dates.html"><img class="blog-card-img" src="assets/blog/best-before.jpg" alt="Elintarvikkeiden päiväysmerkinnät" loading="lazy"></a>
+<div class="blog-card-body">
+<span class="blog-card-tag" data-i18n="blog.c3.tag"></span>
+<h3><a href="blog-best-before-dates.html" data-i18n="blog.c3.title"></a></h3>
+<p data-i18n="blog.c3.ex"></p>
+<a href="blog-best-before-dates.html" class="blog-card-link"><span data-i18n="blog.read">Lue artikkeli</span> ←</a>
+</div>
+</div>
+<div class="blog-card-placeholder animate-on-scroll" data-i18n="blog.soon">Lisää artikkeleita on tulossa…</div>
+</div>
+</section>
+
+<footer class="footer">
+<div class="footer-container">
+<div class="footer-brand">
+<a href="index.html" class="logo" aria-label="mazgo"><span class="logo-icon"><img src="assets/brand/mazgo-wordmark-white.png" alt="mazgo"></span></a>
+<p data-i18n="footer.tag">mazgo yhdistää sinut lähellä oleviin leipomoihin, ravintoloihin ja kahviloihin.</p>
+<div class="footer-social">
+<a href="#" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+<a href="#" aria-label="Facebook"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+<a href="#" aria-label="X"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></a>
+<a href="#" aria-label="Telegram"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg></a>
+</div>
+</div>
+<div class="footer-col">
+<h4 data-i18n="footer.app">Sovellus</h4>
+<ul>
+<li><a href="index.html#how" data-i18n="nav.how">Näin se toimii</a></li>
+<li><a href="#" data-i18n="nav.download">Lataa sovellus</a></li>
+<li><a href="terms.html" data-i18n="footer.terms">Käyttöehdot</a></li>
+<li><a href="privacy.html" data-i18n="footer.privacy">Tietosuojaseloste</a></li>
+<li><a href="delete-account.html" data-i18n="footer.delete">Tilin poistaminen</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4 data-i18n="footer.forMerchants">Kauppiaille</h4>
+<ul>
+<li><a href="index.html#register" data-i18n="nav.register">Ilmoita liikkeesi</a></li>
+<li><a href="index.html#merchants" data-i18n="nav.merchants">Kauppiaille</a></li>
+<li><a href="help.html" data-i18n="footer.help">Ohjekeskus</a></li>
+<li><a href="pricing.html" data-i18n="footer.pricing">Hinnasto ja provisio</a></li>
+<li><a href="blog.html" data-i18n="nav.blog">Blogi</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4 data-i18n="footer.contact">Yhteystiedot</h4>
+<ul>
+<li class="plain" data-i18n="footer.email">tuki@mazgo.fi</li>
+<li class="plain" data-i18n="footer.phone">+358 40 123 4567</li>
+<li class="plain" data-i18n="footer.city">Helsinki, Suomi</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<div data-i18n="footer.rights">© 2026 mazgo. Kaikki oikeudet pidätetään.</div>
+<div data-i18n="footer.made">Suunniteltu Suomessa</div>
+</div>
+</footer>
+
+<div class="toast" id="toast" role="status"><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg><span id="toastMsg">Valmis!</span></div>
+
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Takaisin ylös"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg></button>
+<script src="i18n.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
