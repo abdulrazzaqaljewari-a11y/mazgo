@@ -488,3 +488,33 @@ Object.assign(I18N, {
 "a3.stat3l":{fi:"kotitalouksien suurin hävikkiryhmä: vihannekset, juurekset ja perunat",en:"largest household waste group: vegetables, roots and potatoes",ar:"أكبر مجموعة هدر منزلي: خضار وجذور وبطاطا"},
 "a3.src":{fi:"Lähteet: Luonnonvarakeskus (Luke) 2021–2022 · Ruokavirasto — päiväysmerkinnät",en:"Sources: Natural Resources Institute Finland (Luke) 2021–2022 · Finnish Food Authority — date labelling",ar:"المصادر: معهد الموارد الطبيعية الفنلندي (Luke) 2021–2022 · هيئة سلامة الغذاء الفنلندية — تواريخ المنتجات"}
 });
+
+/* ============ Premium homepage: marquee + gallery + honesty notes ============ */
+Object.assign(I18N, {
+"mq.1":{fi:"Vähennä ruokahävikkiä",en:"Cut food waste",ar:"قلّل هدر الطعام"},
+"mq.2":{fi:"Säästä rahaa",en:"Save money",ar:"وفّر أموالك"},
+"mq.3":{fi:"Tue paikallisia liikkeitä",en:"Support local shops",ar:"ادعم المحلات المحلية"},
+"mq.4":{fi:"Nopea ja helppo",en:"Quick and easy",ar:"سريع وسهل"},
+"mq.5":{fi:"Tuoretta ruokaa edullisesti",en:"Fresh food for less",ar:"طعام طازج بأقل سعر"},
+"mq.6":{fi:"Yhdessä kestävämpi huominen",en:"A greener tomorrow, together",ar:"غدٌ أكثر استدامة معاً"},
+
+"gal.label":{fi:"Löydä lähisi",en:"Discover near you",ar:"اكتشف قريباً منك"},
+"gal.title":{fi:"Tällaisia tarjouksia löydät mazgosta",en:"Offers like these await you on mazgo",ar:"عروض مثل هذه بانتظارك في mazgo"},
+"gal.desc":{fi:"Leipomoiden yllätyspussit, lounaat, kahviloiden kassit ja ruokakauppojen ylijäämä — kaikki vähintään 30 % alennuksella ennen sulkemista.",en:"Bakery surprise bags, lunches, café bags and grocery surplus — all at least 30 % off before closing.",ar:"سلال مخابز مفاجئة، وجبات غداء، سلال مقاهي وفائض محلات الأغذية — كلها بخصم لا يقل عن 30٪ قبل الإغلاق."},
+"gal.i1.n":{fi:"Lounas leipomosta",en:"Bakery lunch",ar:"غداء من المخبز"},
+"gal.i1.p":{fi:"4,90 €",en:"€4.90",ar:"4.90 €"},
+"gal.i1.o":{fi:"9,80 €",en:"€9.80",ar:"9.80 €"},
+"gal.i2.n":{fi:"Pullayllätyspussi",en:"Pastry surprise bag",ar:"كيس حلويات مفاجئ"},
+"gal.i2.p":{fi:"3,50 €",en:"€3.50",ar:"3.50 €"},
+"gal.i2.o":{fi:"7,00 €",en:"€7.00",ar:"7.00 €"},
+"gal.i3.n":{fi:"Kauppakassin ylijäämä",en:"Grocery bag surplus",ar:"فائض كيس بقالة"},
+"gal.i3.p":{fi:"5,90 €",en:"€5.90",ar:"5.90 €"},
+"gal.i3.o":{fi:"11,80 €",en:"€11.80",ar:"11.80 €"},
+"gal.i4.n":{fi:"Kahvilan yllätyskassi",en:"Café surprise bag",ar:"كيس مقهى مفاجئ"},
+"gal.i4.p":{fi:"4,20 €",en:"€4.20",ar:"4.20 €"},
+"gal.i4.o":{fi:"8,40 €",en:"€8.40",ar:"8.40 €"},
+"gal.off":{fi:"−50 %",en:"−50 %",ar:"−50 %"},
+"gal.note":{fi:"Esimerkkitarjouksia — mazgo on kehitteillä.",en:"Example offers — mazgo is in development.",ar:"عروض توضيحية — mazgo قيد التطوير."},
+
+"tst.note":{fi:"Esimerkkejä tavoitelluista käyttäjäkokemuksista — mazgo on vielä kehitteillä.",en:"Examples of the experiences we're aiming for — mazgo is still in development.",ar:"أمثلة للتجارب التي نستهدفها — mazgo ما زال قيد التطوير."}
+});
