@@ -522,3 +522,17 @@ Object.assign(I18N, {
 Object.assign(I18N, {
 "faq.more":{fi:"Katso kaikki kysymykset ohjekeskuksessa",en:"See all questions in the help center",ar:"شوف كل الأسئلة بمركز المساعدة"}
 });
+
+Object.assign(I18N, {
+"story.label":{fi:"Elämyksiä lähiliikkeistä",en:"Stories from local shops",ar:"قصص من المحلات المحلية"},
+"story.title":{fi:"Jokaisella tarjouksella on tarinansa",en:"Every offer has a story",ar:"لكل عرضٍ قصة"},
+"story.s1.tag":{fi:"Asiakkaille",en:"For customers",ar:"للزبائن"},
+"story.s1.t":{fi:"Tuoretta ruokaa — puolet hinnasta",en:"Fresh food at half the price",ar:"طعام طازج بنصف السعر"},
+"story.s1.p":{fi:"Varaa tarjous sovelluksessa, nouda lähiliikkeestä ja näytä myyjälle elävä noutokoodi. Muutamassa minuutissa olet pelastanut herkullisen aterian päivän päätteeksi.",en:"Book an offer in the app, pick it up at a local shop and show the live pickup code to the seller. In a few minutes you've rescued a delicious meal at the end of the day.",ar:"احجز العرض بالتطبيق، استلمه من محل قريب وأرسل رمز الاستلام الحي للبائع. خلال دقائق تنقذ وجبة لذيذة بنهاية اليوم."},
+"story.s1.chip":{fi:"10 min varaus · elävä noutokoodi",en:"10-minute reservation · live pickup code",ar:"حجز 10 دقائق · رمز استلام حي"},
+"story.wide":{fi:"Säästä rahaa ja pelasta ruokaa — joka viikko.",en:"Save money and rescue food — every week.",ar:"وفّر فلوسك وانقذ الطعام — كل أسبوع."},
+"story.s2.tag":{fi:"Kauppiaille",en:"For merchants",ar:"للتجار"},
+"story.s2.t":{fi:"Myy päivän ylijäämä minuuteissa",en:"Sell the day's surplus in minutes",ar:"بِع فائض يومك بدقائق"},
+"story.s2.p":{fi:"Julkaise tarjous valmiista pohjasta ennen sulkemista: tuote, alkuperäinen ja alennettu hinta, annosten määrä ja noutoaika. Tilitys kerran viikossa — provisio vain toteutuneista myynneistä.",en:"Publish an offer from a ready template before closing: product, original and discounted price, portions and pickup time. Payout once a week — commission only on completed sales.",ar:"انشر عرضك من قالب جاهز قبل الإغلاق: المنتج، السعر الأصلي والمخفّض، عدد الحصص ووقت الاستلام. تسوية مرة بالأسبوع — عمولة فقط على المبيعات المنجزة."},
+"story.s2.chip":{fi:"20 % provisio · viikoittainen tilitys",en:"20 % commission · weekly payout",ar:"عمولة 20٪ · تسوية أسبوعية"}
+});
