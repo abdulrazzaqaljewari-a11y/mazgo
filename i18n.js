@@ -518,3 +518,7 @@ Object.assign(I18N, {
 
 "tst.note":{fi:"Esimerkkejä tavoitelluista käyttäjäkokemuksista — mazgo on vielä kehitteillä.",en:"Examples of the experiences we're aiming for — mazgo is still in development.",ar:"أمثلة للتجارب التي نستهدفها — mazgo ما زال قيد التطوير."}
 });
+
+Object.assign(I18N, {
+"faq.more":{fi:"Katso kaikki kysymykset ohjekeskuksessa",en:"See all questions in the help center",ar:"شوف كل الأسئلة بمركز المساعدة"}
+});
